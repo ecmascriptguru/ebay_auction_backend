@@ -10,6 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response as HttpResponse;
 
 Route::get('/', 'WelcomeController@index');
 
@@ -19,3 +22,21 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::group(['prefix' => 'api/'], function() {
+	Route::get('signup/', function() {
+		$credentials = Input::only('email', 'password');
+
+		// var_dump($credentials);exit;
+
+		try {
+			$user = User::create($credentials);
+		} catch (Exception $e) {
+			return Response::json(['error' => 'User already exists.'], HttpResponse::HTTP_CONFLICT);
+		}
+
+		$token = JWTAuth::fromUser($user);
+
+		return Response::json(compact('token'));
+	});
+});
