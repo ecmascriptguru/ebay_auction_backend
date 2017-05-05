@@ -24,7 +24,7 @@ Route::controllers([
 ]);
 
 Route::group(['prefix' => 'api/'], function() {
-	Route::get('signup/', function() {
+	Route::post('signup/', function() {
 		$credentials = Input::only('email', 'password');
 		$credentials['password'] = Hash::make($credentials['password']);
 
