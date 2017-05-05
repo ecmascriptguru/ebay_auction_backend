@@ -38,4 +38,14 @@ Route::group(['prefix' => 'api/'], function() {
 
 		return Response::json(compact('token'));
 	});
+
+	Route::post('/signin', function () {
+		$credentials = Input::only('email', 'password');
+
+		if ( ! $token = JWTAuth::attempt($credentials)) {
+			return Response::json(false, HttpResponse::HTTP_UNAUTHORIZED);
+		}
+
+		return Response::json(compact('token'));
+	});
 });
