@@ -48,4 +48,6 @@ Route::group(['prefix' => 'api/'], function() {
 
 		return Response::json(compact('token'));
 	});
+
+	Route::resource('items', 'Api\ItemsController');
 });
