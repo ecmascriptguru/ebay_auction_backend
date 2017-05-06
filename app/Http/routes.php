@@ -28,15 +28,20 @@ Route::group(['prefix' => 'api/'], function() {
 		$credentials = Input::only('email', 'password');
 		$credentials['password'] = Hash::make($credentials['password']);
 
+		// var_dump($credentials);exit;
 		try {
 			$user = User::create($credentials);
 		} catch (Exception $e) {
 			return Response::json(['error' => 'User already exists.'], HttpResponse::HTTP_CONFLICT);
 		}
 
+		$user->name = Input::only('name')['name'];
+		$user->save();
 		$token = JWTAuth::fromUser($user);
 
-		return Response::json(compact('token'));
+		return Response::json(
+			array('status' => true, 'token' => $token)
+		);
 	});
 
 	Route::post('/signin', function () {
