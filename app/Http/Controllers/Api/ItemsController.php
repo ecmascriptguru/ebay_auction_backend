@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
-use JWTAuth;
+// use JWTAuth;
 
 class ItemsController extends Controller {
 
@@ -19,20 +19,8 @@ class ItemsController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-		$token = $request->input('token');
-
-		try {
-			$user = JWTAuth::toUser($token);
-
-			if ($user) {
-				return Response()->json($user);
-			} else {
-				return Response()->json(array('status' => false, 'msg' => 'Not authorized.'));
-			}
-		} catch(\Tymon\JWTAuth\Exceptions\JWTException $e) {
-			return Response()->json(false, HttpResponse::HTTP_UNAUTHORIZED);
-		}
-			
+		$param = $request->input("something");
+		return Response()->json(array('status'=> true, 'result' => $param));
 	}
 
 	/**
