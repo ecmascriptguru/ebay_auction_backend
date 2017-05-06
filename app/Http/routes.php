@@ -25,18 +25,15 @@ Route::controllers([
 
 Route::group(['prefix' => 'api/'], function() {
 	Route::post('signup/', function() {
-		$credentials = Input::only('email', 'password');
+		$credentials = Input::only('name', 'email', 'password');
 		$credentials['password'] = Hash::make($credentials['password']);
 
-		// var_dump($credentials);exit;
 		try {
 			$user = User::create($credentials);
 		} catch (Exception $e) {
 			return Response::json(['error' => 'User already exists.'], HttpResponse::HTTP_CONFLICT);
 		}
-
-		$user->name = Input::only('name')['name'];
-		$user->save();
+		
 		$token = JWTAuth::fromUser($user);
 
 		return Response::json(
