@@ -4,8 +4,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response as HttpResponse;
-// use JWTAuth;
 
 class ItemsController extends Controller {
 
