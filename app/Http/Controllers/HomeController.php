@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use App\Item;
 use App\History;
+use App\Domain;
 
 class HomeController extends Controller {
 
@@ -34,11 +35,9 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		// $user = Auth::user();
-		// $item = Item::find(1);
-		// $history = History::find(1);
-		// $items = $user->items;
-		var_dump($history->item);exit;
+		$domain = Domain::firstOrCreate(['name' => 'ebay.co.uk'])->id;
+		$item = Item::firstOrNew(['domain_id' => $domain, 'ref' => '123456789']);
+		var_dump($item->found_by);exit;
 		return view('home');
 	}
 

@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model {
 
+	protected $fillable = ['domain_id', 'ref', 'found_by'];
 	//
 	public function founder()
     {
