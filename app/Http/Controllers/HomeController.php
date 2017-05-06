@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use App\Item;
+use App\History;
 
 class HomeController extends Controller {
 
@@ -33,6 +34,11 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+		// $user = Auth::user();
+		// $item = Item::find(1);
+		// $history = History::find(1);
+		// $items = $user->items;
+		var_dump($history->item);exit;
 		return view('home');
 	}
 

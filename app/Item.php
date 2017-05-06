@@ -9,4 +9,8 @@ class Item extends Model {
     {
         return $this->belongsTo('App\User', 'found_by');
     }
+
+	public function histories() {
+		return $this->hasMany('App\History');
+	}
 }
