@@ -45,10 +45,12 @@ Route::group(['prefix' => 'api/'], function() {
 		$credentials = Input::only('email', 'password');
 
 		if ( ! $token = JWTAuth::attempt($credentials)) {
-			return Response::json(false, HttpResponse::HTTP_UNAUTHORIZED);
+			return Response::json(['status' => false, 'message' => 'Credentials are incorrect.']);
 		}
 
-		return Response::json(compact('token'));
+		return Response::json(
+			array('status' => true, 'token' => $token)
+		);
 	});
 
 	Route::group(['prefix' => 'items', 'middleware' => ['jwt']], function() {

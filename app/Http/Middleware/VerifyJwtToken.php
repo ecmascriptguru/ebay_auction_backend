@@ -22,7 +22,7 @@ class VerifyJwtToken {
 			$request->merge(array('user' => $user));
 			return $next($request);
 		} catch(\Tymon\JWTAuth\Exceptions\JWTException $e) {
-			return Response()->json(array('status'=>false), HttpResponse::HTTP_UNAUTHORIZED);
+			return Response()->json(array('status'=>false, 'message' => 'Your token was expired.'));
 		}
 	}
 
