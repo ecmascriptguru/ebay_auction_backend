@@ -20,7 +20,12 @@ class ItemsController extends Controller {
 	public function index(Request $request)
 	{
 		$ref = $request->input("ref");
-		$domain = $request->input('domain');
+		$domain = $request->input('host');
+		$title = $request->input('title');
+		$price = $request->input('price');
+		$bidders = $request->input('bidders');
+		$description = "";
+
 		$domain_id = Domain::firstOrCreate(['name' => $domain])->id;
 		$item = Item::firstOrNew(['domain_id' => $domain_id, 'ref' => $ref]);
 
@@ -29,6 +34,13 @@ class ItemsController extends Controller {
 			$item->found_by = $user->id;
 			$item->save();
 		}
+
+		$history = History::FirstOrCreate([
+			'item_id' => $item->id,
+			'price' => $price,
+			'bidders' => $bidders,
+			'title' => $title
+		]);
 
 		return Response()->json(array('status'=> true, 'histories' => $item->histories));
 	}
