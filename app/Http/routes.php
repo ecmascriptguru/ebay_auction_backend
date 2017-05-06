@@ -31,9 +31,9 @@ Route::group(['prefix' => 'api/'], function() {
 		try {
 			$user = User::create($credentials);
 		} catch (Exception $e) {
-			return Response::json(['error' => 'User already exists.'], HttpResponse::HTTP_CONFLICT);
+			return Response::json(['status' => false, 'message' => 'User already exists.']);
 		}
-		
+
 		$token = JWTAuth::fromUser($user);
 
 		return Response::json(
