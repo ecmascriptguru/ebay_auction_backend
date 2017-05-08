@@ -35,9 +35,9 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		$domain = Domain::firstOrCreate(['name' => 'ebay.co.uk'])->id;
-		$item = Item::firstOrNew(['domain_id' => $domain, 'ref' => '123456789']);
-		var_dump($item->found_by);exit;
+		// $domain = Domain::firstOrCreate(['name' => 'ebay.co.uk'])->id;
+		// $item = Item::firstOrNew(['domain_id' => $domain, 'ref' => '123456789']);
+		// var_dump($item->found_by);exit;
 		return view('home');
 	}
 
