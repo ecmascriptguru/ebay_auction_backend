@@ -24,7 +24,7 @@ class ItemsController extends Controller {
 		$title = $request->input('title');
 		$price = $request->input('price');
 		$bidders = $request->input('bidders');
-		$description = "";
+		$description = $request->input('description');
 
 		$domain_id = Domain::firstOrCreate(['name' => $domain])->id;
 		$item = Item::firstOrNew(['domain_id' => $domain_id, 'ref' => $ref]);
@@ -39,7 +39,8 @@ class ItemsController extends Controller {
 			'item_id' => $item->id,
 			'price' => $price,
 			'bidders' => $bidders,
-			'title' => $title
+			'title' => $title,
+			'description' => $description
 		]);
 
 		return Response()->json(array('status'=> true, 'histories' => $item->histories));
