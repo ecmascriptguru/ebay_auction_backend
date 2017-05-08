@@ -35,9 +35,10 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		// $domain = Domain::firstOrCreate(['name' => 'ebay.co.uk'])->id;
-		// $item = Item::firstOrNew(['domain_id' => $domain, 'ref' => '123456789']);
-		// var_dump($item->found_by);exit;
+		// $dom = new DOMDocument();
+		// $tmp = file_get_contents("http://vi.vipr.ebaydesc.com/ws/eBayISAPI.dll?ViewItemDescV4&item=292083189107&t=1493453120000&tid=310&category=177831&seller=w.giddy&excSoj=1&excTrk=1&lsite=3&ittenable=false&domain=ebay.co.uk&descgauge=1");
+		// $dom->loadHTML($tmp);
+		// exit;
 		return view('home');
 	}
 
