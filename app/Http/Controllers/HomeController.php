@@ -35,7 +35,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		// $dom = new DOMDocument();
+		// $dom = new DOMDocument(); 
 		// $tmp = file_get_contents("http://vi.vipr.ebaydesc.com/ws/eBayISAPI.dll?ViewItemDescV4&item=292083189107&t=1493453120000&tid=310&category=177831&seller=w.giddy&excSoj=1&excTrk=1&lsite=3&ittenable=false&domain=ebay.co.uk&descgauge=1");
 		// $dom->loadHTML($tmp);
 		// exit;
