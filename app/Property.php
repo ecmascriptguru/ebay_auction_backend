@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Property extends Model {
 
-	protected $fillable = ['ref'];
+	protected $fillable = ['domain_id', 'ref'];
 	//
 	public function founder()
     {
@@ -12,7 +12,7 @@ class Property extends Model {
     }
 
 	public function histories() {
-		return $this->hasMany('App\PropertyHistory', 'property_id');
+		return $this->hasMany('App\PropertyHistory', 'property_id')->with("agent");
 	}
 
 }

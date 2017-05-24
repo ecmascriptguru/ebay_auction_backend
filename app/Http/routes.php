@@ -57,5 +57,7 @@ Route::group(['prefix' => 'api/'], function() {
 		Route::post('/', 'Api\ItemsController@index');
 	});
 
-	// Route::resource('items','Api\ItemsController');
+	Route::group(['prefix' => 'properties', 'middleware' => ['jwt']], function() {
+		Route::post('/', 'Api\PropertiesController@index');
+	});
 });

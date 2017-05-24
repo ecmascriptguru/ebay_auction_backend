@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PropertyHistory extends Model {
 
-	protected $fillable = ['price', 'currency', 'title', 'address/subtitle', 'features', 'description', 'status'];
+	protected $fillable = ['property_id', 'agent_id', 'price', 'currency', 'title', 'address/subtitle', 'features', 'description', 'status', 'created_by', 'updated_by'];
 	//
 	public function founder()
     {
