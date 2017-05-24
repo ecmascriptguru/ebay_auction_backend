@@ -37,7 +37,7 @@ Route::group(['prefix' => 'api/'], function() {
 		$token = JWTAuth::fromUser($user);
 
 		return Response::json(
-			array('status' => true, 'token' => $token)
+			array('status' => true, 'token' => $token, 'user' => $user)
 		);
 	});
 
@@ -48,8 +48,10 @@ Route::group(['prefix' => 'api/'], function() {
 			return Response::json(['status' => false, 'message' => 'Credentials are incorrect.']);
 		}
 
+		$user = JWTAuth::toUser($token);
+
 		return Response::json(
-			array('status' => true, 'token' => $token)
+			array('status' => true, 'token' => $token, 'user' => $user)
 		);
 	});
 
