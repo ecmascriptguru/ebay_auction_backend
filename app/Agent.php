@@ -11,7 +11,7 @@ class Agent extends Model {
         return $this->belongsTo('App\User', 'found_by');
     }
 
-	// public function properties() {
-	// 	return $this->hasMany('App\Property');
-	// }
+	public function properties() {
+		return $this->hasMany('App\Property', 'agent_id');
+	}
 }
