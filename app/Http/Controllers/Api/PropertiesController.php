@@ -38,7 +38,7 @@ class PropertiesController extends Controller {
         //  For history
 		$title = $request->input('title');
 		$price = $request->input('price');
-		$address = $request->input('address');
+		$address = $request->input("address/subtitle");
         $features = $request->input('features');
 		$description = $request->input('description');
 
@@ -88,7 +88,7 @@ class PropertiesController extends Controller {
             $history->save();
         }
 
-		return Response()->json(array('status'=> true, 'histories' => $property->histories));
+		return Response()->json(array('status'=> true, 'histories' => $property->histories, 'user' => $user));
 	}
 
 	/**
