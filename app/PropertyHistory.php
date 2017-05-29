@@ -11,6 +11,10 @@ class PropertyHistory extends Model {
         return $this->belongsTo('App\User', 'created_by');
     }
 
+    public function property() {
+        return $this->belongsTo('App\Property', 'property_id');
+    }
+
 	public function agent()
     {
         return $this->belongsTo('App\Agent', 'agent_id');

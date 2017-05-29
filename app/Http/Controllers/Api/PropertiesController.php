@@ -88,7 +88,7 @@ class PropertiesController extends Controller {
             $history->save();
         }
 
-		return Response()->json(array('status'=> true, 'histories' => $property->histories, 'user' => $user));
+		return Response()->json(array('status'=> true, 'ref' => $ref, 'histories' => $property->histories, 'user' => $user));
 	}
 
 	/**
