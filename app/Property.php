@@ -12,7 +12,7 @@ class Property extends Model {
     }
 
 	public function histories() {
-		return $this->hasMany('App\PropertyHistory', 'property_id')->with("agent");
+		return $this->hasMany('App\PropertyHistory', 'property_id')->orderBy('created_at')->with("agent");
 	}
 
 }

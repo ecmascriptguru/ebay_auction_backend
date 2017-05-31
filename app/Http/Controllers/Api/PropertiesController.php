@@ -38,6 +38,11 @@ class PropertiesController extends Controller {
         //  For history
 		$title = $request->input('title');
 		$price = $request->input('price');
+        $price_data = $request->input('price_data');
+        if (!isset($price_data) || empty($price_data)) {
+            $price_data = "";
+        }
+        $currency = $request->input('currency');
 		$address = $request->input("address/subtitle");
         $features = $request->input('features');
 		$description = $request->input('description');
@@ -75,6 +80,8 @@ class PropertiesController extends Controller {
             'property_id' => $property->id,
             'agent_id' => $agent->id,
             'price' => $price,
+            'price_data' => $price_data,
+            'currency' => $currency,
             'title' => $title,
             'address/subtitle' => $address,
             'features' => $features,
